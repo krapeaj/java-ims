@@ -42,5 +42,4 @@ then
     exit 1
 fi
 
-cd $TARGET
 java -jar ims-application > /dev/null 2>&1 &
