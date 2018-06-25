@@ -43,4 +43,4 @@ then
 fi
 
 cd $TARGET
-java -jar app & > /dev/null 2>&1
+java -jar ims-application & > /dev/null 2>&1
