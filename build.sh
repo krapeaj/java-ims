@@ -5,7 +5,6 @@ export JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom"
 
 REPO=$HOME/java-ims
 TARGET=$REPO/build
-JAR_FILE_NAME=$TARGET/libs/java-ims-1.0.0.jar
 
 cd $REPO
 git fetch
@@ -44,4 +43,4 @@ then
 fi
 
 cd $TARGET
-java -jar $JAR_FILE_NAME > $HOME/error.log 2>&1
+java -jar app & > /dev/null 2>&1
