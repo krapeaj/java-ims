@@ -22,7 +22,7 @@ echo "0. Git pull.."
 git merge origin/nginx 
 
 echo "1.Stop server.."
-CURRENT_PID=$(pgrep -f java-ims)
+CURRENT_PID=$(pgrep -f app)
 
 echo "$CURRENT_PID"
 
@@ -35,7 +35,7 @@ else
 fi
 
 echo "2.Build gradle"
-./gradlew clean build
+./gradlew build -x test
 # check gradle build
 if [ ! -d $TARGET ]
 then
