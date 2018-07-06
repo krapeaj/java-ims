@@ -16,8 +16,12 @@ import javax.persistence.EntityNotFoundException;
 public class CommentService {
     private static final Logger logger = LoggerFactory.getLogger(CommentService.class);
 
+    private final CommentRepository commentRepository;
+
     @Autowired
-    private CommentRepository commentRepository;
+    public CommentService(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     @Transactional
     public Comment add(User loginUser, Issue issue, Comment comment) {

@@ -3,7 +3,6 @@ package codesquad.service;
 import codesquad.domain.Issue;
 import codesquad.domain.Milestone;
 import codesquad.domain.MilestoneRepository;
-import codesquad.dto.IssueDto;
 import codesquad.dto.MilestoneDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,12 @@ import java.util.List;
 @Service
 public class MilestoneService {
 
+    private final MilestoneRepository milestoneRepository;
+
     @Autowired
-    private MilestoneRepository milestoneRepository;
+    public MilestoneService(MilestoneRepository milestoneRepository) {
+        this.milestoneRepository = milestoneRepository;
+    }
 
     public List<Milestone> findAll() {
         return milestoneRepository.findAll();

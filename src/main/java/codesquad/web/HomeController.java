@@ -15,8 +15,12 @@ import java.util.List;
 public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+    private final IssueRepository issueRepository;
+
     @Autowired
-    private IssueRepository issueRepository;
+    public HomeController(IssueRepository issueRepository) {
+        this.issueRepository = issueRepository;
+    }
 
     @GetMapping("/")
     public String home(Model model) {

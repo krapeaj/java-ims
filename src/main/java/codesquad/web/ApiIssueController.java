@@ -18,11 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/issues/{id}")
 public class ApiIssueController {
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
+
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    public ApiIssueController(IssueService issueService, UserService userService) {
+        this.issueService = issueService;
+        this.userService = userService;
+    }
 
     @GetMapping("/setMilestone/{milestoneId}")
     public ResponseEntity<Issue> setMilestone(@LoginUser User loginUser, @PathVariable long id, @PathVariable long milestoneId) {

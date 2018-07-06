@@ -1,7 +1,6 @@
 package codesquad.web;
 
 import codesquad.domain.Comment;
-import codesquad.domain.Issue;
 import codesquad.domain.User;
 import codesquad.security.LoginUser;
 import codesquad.service.CommentService;
@@ -23,11 +22,15 @@ import java.net.URI;
 public class ApiCommentController {
     private static final Logger logger = LoggerFactory.getLogger(ApiCommentController.class);
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
+
+    private final IssueService issueService;
 
     @Autowired
-    private IssueService issueService;
+    public ApiCommentController(CommentService commentService, IssueService issueService) {
+        this.commentService = commentService;
+        this.issueService = issueService;
+    }
 
     @PostMapping("")
     public ResponseEntity<Comment> add(@LoginUser User loginUser, @PathVariable long id, @Valid @RequestBody Comment comment) {

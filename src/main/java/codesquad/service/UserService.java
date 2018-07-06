@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.annotation.Resource;
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import codesquad.UnAuthenticationException;
@@ -17,8 +18,12 @@ import codesquad.dto.UserDto;
 @Service
 public class UserService {
 
-    @Resource(name = "userRepository")
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public User add(UserDto userDto) {
         return userRepository.save(userDto._toUser());

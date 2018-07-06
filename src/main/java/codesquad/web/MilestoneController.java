@@ -22,11 +22,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MilestoneController {
     private static final Logger logger = LoggerFactory.getLogger(MilestoneController.class);
 
-    @Autowired
-    private MilestoneService milestoneService;
+    private final MilestoneService milestoneService;
+
+    private final IssueService issueService;
 
     @Autowired
-    private IssueService issueService;
+    public MilestoneController(MilestoneService milestoneService, IssueService issueService) {
+        this.milestoneService = milestoneService;
+        this.issueService = issueService;
+    }
 
     @GetMapping("")
     public String list(Model model) {

@@ -18,11 +18,15 @@ import javax.persistence.EntityNotFoundException;
 public class IssueService {
     private static final Logger logger = LoggerFactory.getLogger(IssueService.class);
 
-    @Autowired
-    private IssueRepository issueRepository;
+    private final IssueRepository issueRepository;
+
+    private final MilestoneService milestoneService;
 
     @Autowired
-    private MilestoneService milestoneService;
+    public IssueService(IssueRepository issueRepository, MilestoneService milestoneService) {
+        this.issueRepository = issueRepository;
+        this.milestoneService = milestoneService;
+    }
 
     public UriGeneratable addIssue(Issue newIssue) {
         return issueRepository.save(newIssue);

@@ -22,14 +22,18 @@ import support.domain.UriGeneratable;
 public class IssueController {
     private static final Logger logger = LoggerFactory.getLogger(IssueController.class);
 
-    @Autowired
-    private IssueService issueService;
+    private final IssueService issueService;
+
+    private final MilestoneService milestoneService;
+
+    private final UserService userService;
 
     @Autowired
-    private MilestoneService milestoneService;
-
-    @Autowired
-    private UserService userService;
+    public IssueController(IssueService issueService, MilestoneService milestoneService, UserService userService) {
+        this.issueService = issueService;
+        this.milestoneService = milestoneService;
+        this.userService = userService;
+    }
 
     @GetMapping("/form")
     public String form(@LoginUser User loginUser) {
