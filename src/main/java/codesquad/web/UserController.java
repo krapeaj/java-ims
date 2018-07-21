@@ -1,6 +1,5 @@
 package codesquad.web;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import codesquad.UnAuthenticationException;
