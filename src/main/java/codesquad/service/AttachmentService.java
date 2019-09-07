@@ -21,15 +21,11 @@ import java.io.IOException;
 public class AttachmentService {
     private static final Logger logger = LoggerFactory.getLogger(AttachmentService.class);
 
-    private final AttachmentRepository attachmentRepository;
+    @Autowired
+    private AttachmentRepository attachmentRepository;
 
     @Value("${Attachment.upload.directory.path}")
     private String location;
-
-    @Autowired
-    public AttachmentService(AttachmentRepository attachmentRepository) {
-        this.attachmentRepository = attachmentRepository;
-    }
 
     @Transactional
     public Attachment add(MultipartFile file, User loginUser, Issue issue) {

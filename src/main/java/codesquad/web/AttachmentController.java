@@ -29,15 +29,11 @@ import java.nio.file.Paths;
 public class AttachmentController {
     private static final Logger logger = LoggerFactory.getLogger(AttachmentController.class);
 
-    private final AttachmentService attachmentService;
-
-    private final IssueService issueService;
+    @Autowired
+    private AttachmentService attachmentService;
 
     @Autowired
-    public AttachmentController(AttachmentService attachmentService, IssueService issueService) {
-        this.attachmentService = attachmentService;
-        this.issueService = issueService;
-    }
+    private IssueService issueService;
 
     @GetMapping("/{attachmentId}")
     public ResponseEntity<PathResource> download(@LoginUser User loginUser, @PathVariable long attachmentId) {
