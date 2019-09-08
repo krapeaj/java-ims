@@ -1,5 +1,5 @@
 # Issue Management System
-A demo of an issue management system in which authentication/authorization and basic CRUD of issues/milestones are implemented.
+A demo of an issue management system in which authentication/authorization and basic CRUD of issues/milestones are implemented. A minimal template is used to render content from the server.
 
 ## Relevant topics
 * REST API
